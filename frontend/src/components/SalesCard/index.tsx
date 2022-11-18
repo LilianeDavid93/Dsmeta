@@ -3,7 +3,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import icon from "../../assets/img/icone1.svg";
 import NotificationButton from "../notificationButton";
 import "./style.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 
 
@@ -14,6 +15,13 @@ const max = new Date();
 
 const [minDate, setMinDate] = useState(new Date(min));
 const [maxDate, setMaxDate] = useState(max);
+
+useEffect(() => {
+  axios.get("http://localhost:8080/sales")
+  .then(response => {
+    console.log(response.data);
+  });
+}, []);
 
 
 
